@@ -4,4 +4,4 @@ from .models import Record
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
-        fields = '__all__'
+        fields = ['id', 'name']
