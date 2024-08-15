@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import AddRecord from './pages/AddRecord';
+import CustomerRecord from './components/CustomCard';
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
+      <Navbar isAuthenticated={true} />
+      <Routes>
+        <Route path="/" element={<h1>Home Page</h1>} />
+        <Route path="/add-record" element={<AddRecord />} />
+        
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
