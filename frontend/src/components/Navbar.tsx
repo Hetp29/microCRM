@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Box, Button, Flex, Link, Spacer, Text } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface NavbarProps {
   isAuthenticated: boolean;
@@ -7,24 +8,35 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
   return (
-    <nav className="bg-gray-900 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link className="text-xl font-bold" to="/">Django CRM</Link>
-        <div className="flex space-x-4">
+    <Box bg="gray.800" color="white" shadow="md">
+      <Flex align="center" p={4} maxW="container.lg" mx="auto">
+        <Link as={RouterLink} to="/" fontSize="2xl" fontWeight="bold">
+          Django CRM
+        </Link>
+        <Spacer />
+        <Flex gap={4}>
           {isAuthenticated ? (
             <>
-              <Link className="text-gray-300 hover:text-white" to="/add-record">Add Record</Link>
-              <Link className="text-gray-300 hover:text-white" to="/logout">Logout</Link>
+              <Link as={RouterLink} to="/add-record" _hover={{ color: 'gray.400' }}>
+                Add Record
+              </Link>
+              <Link as={RouterLink} to="/logout" _hover={{ color: 'gray.400' }}>
+                Logout
+              </Link>
             </>
           ) : (
             <>
-              <Link className="text-gray-300 hover:text-white" to="/register">Register</Link>
-              <Link className="text-gray-300 hover:text-white" to="/login">Login</Link>
+              <Link as={RouterLink} to="/register" _hover={{ color: 'gray.400' }}>
+                Register
+              </Link>
+              <Link as={RouterLink} to="/login" _hover={{ color: 'gray.400' }}>
+                Login
+              </Link>
             </>
           )}
-        </div>
-      </div>
-    </nav>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 
