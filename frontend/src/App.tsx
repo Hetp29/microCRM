@@ -1,11 +1,18 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello, React with TypeScript!</h1>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
