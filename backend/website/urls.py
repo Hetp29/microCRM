@@ -3,5 +3,5 @@ from . import views
 from .views import RecordListCreate, RecordRetrieveUpdateDestroy, register
 
 urlpatterns = [
-    path('api/register/', register, name='register'),
+    path('api/register/', views.RegisterUser.as_view(), name='register-user'),
 ]
