@@ -1,32 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-//import LandingPage from './pages/LandingPage';
 import Register from './components/Register';
 import { Box } from '@chakra-ui/react';
 import { HeroSection } from './components/HeroSection';
 import { Layout } from './components/Layout';
 
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<HeroSection />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  );
+};
 
 export const App = () => {
   return (
-    <Layout>
-      <Box bg="gray.50">
-        <HeroSection />
-      </Box>
-    </Layout>
+    <Router>
+      <Layout>
+        <Box bg="gray.50">
+          <AppRoutes />
+        </Box>
+      </Layout>
+    </Router>
   );
 };
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Box bg="gray.50">
-//           <HeroSection />
-//         </Box>
-//         <Route path="/register" element={<Register />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
 
-//export default App;

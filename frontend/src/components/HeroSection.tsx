@@ -26,7 +26,7 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
                             mt={8}
                             colorScheme="brand"
                             onClick={() => {
-                                window.location.href = "/pricing";
+                                window.location.href = "/register";
                             }}
                             >
                                 Get started for free.
