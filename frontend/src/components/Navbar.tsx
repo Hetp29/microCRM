@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Flex, Link, Spacer, Text } from '@chakra-ui/react';
+import { Box, Flex, Link, Spacer } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface NavbarProps {
