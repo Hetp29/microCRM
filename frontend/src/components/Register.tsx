@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -16,7 +16,13 @@ const Register = () => {
       });
       console.log('Registration successful:', response.data);
     } catch (error) {
-      console.error('Error during registration:', error);
+      if (axios.isAxiosError(error)) {
+        // Error is an AxiosError
+        console.error('Axios error during registration:', error.response?.data);
+      } else {
+        // Error is not an AxiosError, handle accordingly
+        console.error('Unexpected error during registration:', error);
+      }
     }
   };
 
