@@ -1,43 +1,130 @@
-import React from 'react';
-import { Box, Flex, Link, Spacer } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { HamBurgerIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  chakra,
+  Container,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Heading,
+  IconButton,
+  Image,
+  Link,
+  LinkBox,
+  LinkOverlay,
+  Spacer,
+  Stack,
+  useDisclosure,
+} from '@chakra-ui/react'
 
-interface NavbarProps {
-  isAuthenticated: boolean;
+const navLinks = [
+  { name: 'About', href: '/about'},
+  { name: 'Features', href: '/features' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Solutions', href: '/solutions'},
+]
+
+const DesktopSidebarContents = ({ name }: any) => {
+  return (
+    <Container maxW={['full', 'container.lg']} p={0}>
+      <Stack
+        justify="space-between"p={[0, 4]}
+        w="full"
+        direction={['column', 'row']}
+        >
+          <Box display={{ base: 'none', md: 'flex' }}>
+            <Heading fontSize="xl">{name}</Heading>
+          </Box>
+          <Spacer />
+          <Stack 
+            align="flex=start"
+            spacing={[4, 10]}
+            direction={['column', 'row']}
+            >
+              {navLinks.map((navLink: any, i: number) => {
+                return (
+                  <Link 
+                    href={navLink.link}
+                    key={`navlink_${i}`}
+                    fontWeight={500}
+                    variant="ghost"
+                    >
+                      {navLink.name}
+                    </Link>
+                )
+              })}
+            </Stack>
+            <Spacer />
+            <LinkBox>
+              <LinkOverlay href=
+                {`/public`} isExternal>
+                  <Image src="logo.png"></Image>
+                </LinkOverlay>
+            </LinkBox>
+        </Stack>
+    </Container>
+  )
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isAuthenticated }) => {
-  return (
-    <Box bg="gray.800" color="white" shadow="md">
-      <Flex align="center" p={4} maxW="container.lg" mx="auto">
-        <Link as={RouterLink} to="/" fontSize="2xl" fontWeight="bold">
-          Django CRM
-        </Link>
-        <Spacer />
-        <Flex gap={4}>
-          {isAuthenticated ? (
-            <>
-              <Link as={RouterLink} to="/add-record" _hover={{ color: 'gray.400' }}>
-                Add Record
-              </Link>
-              <Link as={RouterLink} to="/logout" _hover={{ color: 'gray.400' }}>
-                Logout
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link as={RouterLink} to="/register" _hover={{ color: 'gray.400' }}>
-                Register
-              </Link>
-              <Link as={RouterLink} to="/login" _hover={{ color: 'gray.400' }}>
-                Login
-              </Link>
-            </>
-          )}
-        </Flex>
-      </Flex>
-    </Box>
-  );
-};
+const MobileSidebar = ({ name }: any) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-export default Navbar;
+  return (
+    <>
+      <Flex w="full" align="center">
+        <Heading fontSize="xl">{name}</Heading>
+        <Spacer />
+        <IconButton
+          aria-label="Search database"
+          icon={<HamBurgerIcon />}
+          onClick={onOpen}
+          />
+          <Drawer isOpen={isOpen} placement='right' onClose={onClose} size="xs">
+            <DrawerOverlay />
+            <DrawerContent bg="gray.50">
+              <DrawerCloseButton />
+              <DrawerHeader>{name}</DrawerHeader>
+
+              <DrawerBody>
+                <DesktopSidebarContents />
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+      </Flex>
+    </>
+  )
+}
+
+interface SidebarProps {
+  name: string;
+}
+
+const Sidebar = ({ name }: SidebarProps) => {
+  return (
+    <chakra.header id='header'>
+      <Box display={{ base: 'flex', md: 'none' }} p={4}>
+        <MobileSidebar name={name} />
+      </Box>
+
+      <Box display={{ base: 'none', md: 'flex' }} bg="gray.50">
+        <DesktopSidebarContents name={name} />
+      </Box>
+    </chakra.header>
+  )
+}
+
+interface HeaderProps {
+  name: string;
+}
+
+export const Navbar = ({ name }: HeaderProps) => {
+  return (
+    <Box w = "full">
+      <Sidebar name={name} />
+    </Box>
+  )
+}

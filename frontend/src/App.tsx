@@ -4,18 +4,29 @@ import LandingPage from './pages/LandingPage';
 import Register from './components/Register';
 import { Box } from '@chakra-ui/react';
 import { HeroSection } from './components/HeroSection';
+import { Layout } from './components/Layout';
 
-function App() {
+
+export const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Box bg="gray.50">
-          <HeroSection />
-        </Box>
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
+    <Layout>
+      <Box bg="gray.50">
+        <HeroSection />
+      </Box>
+    </Layout>
   );
-}
+};
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Box bg="gray.50">
+//           <HeroSection />
+//         </Box>
+//         <Route path="/register" element={<Register />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
 
-export default App;
+//export default App;

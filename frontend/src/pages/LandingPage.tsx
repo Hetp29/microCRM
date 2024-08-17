@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Container, Flex, Heading, Text, VStack } from '@chakra-ui/react';
-import Navbar from '../components/Navbar';
+import { Navbar } from '../components/Navbar';
 
 const LandingPage: React.FC = () => {
   return (
