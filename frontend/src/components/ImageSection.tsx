@@ -4,7 +4,7 @@ import { Box, Image, Heading } from '@chakra-ui/react';
 const ImageSection: React.FC = () => {
     return (
         <Box textAlign="center" mb={10} pt={1}>
-            <Heading size="2xl" mb={14} color="gray.700">
+            <Heading size="2xl" mb={14} color="gray.800">
                 Stay Productive
             </Heading>
             <Box display="flex" justifyContent="center" alignItems="center">

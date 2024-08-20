@@ -17,10 +17,12 @@ import {
   Stack,
   useDisclosure,
 } from '@chakra-ui/react';
+// @ts-ignore
+import { Link as ScrollLink } from 'react-scroll';
 
 const navLinks = [
   { name: 'About', href: '/about' },
-  { name: 'Features', href: '/features' },
+  { name: 'Features', href: 'features-section' }, // Update href to match id of FeaturesSection
   { name: 'Pricing', href: '/pricing' },
   { name: 'Solutions', href: '/solutions' },
 ];
@@ -33,7 +35,7 @@ const DesktopSidebarContents = ({ name }: any) => {
           <Link href="/" _hover={{ textDecoration: 'none' }}>
             <Image src="logo.png" alt="Company Logo" width="170px" />
           </Link>
-          <Heading fontSize="xl" ml={4}>{name}</Heading>
+          
         </Flex>
         <Stack
           spacing={[4, 10]}
@@ -41,14 +43,16 @@ const DesktopSidebarContents = ({ name }: any) => {
           align="center"
         >
           {navLinks.map((navLink: any, i: number) => (
-            <Link
-              href={navLink.href}
+            <ScrollLink
+              to={navLink.href}
+              smooth={true}
+              duration={500}
               key={`navlink_${i}`}
               fontWeight={500}
               variant="ghost"
             >
               {navLink.name}
-            </Link>
+            </ScrollLink>
           ))}
         </Stack>
       </Flex>
@@ -66,7 +70,6 @@ const MobileSidebar = ({ name }: any) => {
           <Link href="/" _hover={{ textDecoration: 'none' }}>
             <Image src="logo.png" alt="Company Logo" width="170px" />
           </Link>
-          <Heading fontSize="xl" ml={2}></Heading>
         </Flex>
         <IconButton
           aria-label="Open menu"
@@ -79,7 +82,23 @@ const MobileSidebar = ({ name }: any) => {
             <DrawerCloseButton />
             <DrawerHeader>{name}</DrawerHeader>
             <DrawerBody>
-              <DesktopSidebarContents name={name} />
+              <Stack spacing={6} align="center" w="full">
+                {navLinks.map((navLink: any, i: number) => (
+                  <ScrollLink
+                    to={navLink.href}
+                    smooth={true}
+                    duration={500}
+                    key={`navlink_${i}`}
+                    fontWeight={500}
+                    variant="ghost"
+                    width="full"
+                    textAlign="center"
+                    onClick={onClose}
+                  >
+                    {navLink.name}
+                  </ScrollLink>
+                ))}
+              </Stack>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -87,6 +106,7 @@ const MobileSidebar = ({ name }: any) => {
     </>
   );
 };
+
 
 interface SidebarProps {
   name: string;
@@ -96,7 +116,7 @@ const Sidebar = ({ name }: SidebarProps) => {
   return (
     <chakra.header id='header'>
       <Box display={{ base: 'flex', md: 'none' }} p={4}>
-        <MobileSidebar />
+        <MobileSidebar name={name} />
       </Box>
       <Box display={{ base: 'none', md: 'flex' }} bg="gray.50">
         <DesktopSidebarContents />
