@@ -20,13 +20,39 @@ const AnimatedHeading = motion(Heading);
 
 interface PricingBoxProps {
   pro: boolean;
-  name: string;
+  name: 'Basic' | 'Professional' | 'Enterprise';
 }
 
 export const PricingBox: FunctionComponent<PricingBoxProps> = ({
   pro,
   name,
 }: PricingBoxProps) => {
+  // Define features with a type for the keys
+  const features: Record<'Basic' | 'Professional' | 'Enterprise', string[]> = {
+    Basic: [
+      'Core CRM functionalities',
+      'Basic reporting and analytics',
+      'Email integration',
+      'Contact and lead management'
+    ],
+    Professional: [
+      'Everything in Basic, plus:',
+      'Advanced reporting and analytics',
+      'CRM integrations with popular apps (e.g., Slack, Google Workspace)',
+      'Automated workflows and task management',
+      'Customizable dashboards',
+      'Priority customer support'
+    ],
+    Enterprise: [
+      'Everything in Professional, plus:',
+      'Enterprise-grade security and compliance features',
+      'Dedicated account manager',
+      'Advanced customization options (e.g., custom fields, complex workflows)',
+      'Multi-channel support (e.g., phone, chat, email)',
+      'Extensive integration options with other enterprise systems (e.g., ERP systems, advanced analytics platforms)'
+    ]
+  };
+
   return (
     <AnimatedBox
       boxShadow="sm"
@@ -36,6 +62,9 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       borderColor={pro ? 'brand.500' : 'gray.200'}
       backgroundColor={pro ? 'brand.50' : 'white'}
       borderWidth={2}
+      height="650px" // Adjust the height
+      width="full"
+      maxWidth="450px" // Adjust the max-width
       id="pricing-section"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -47,27 +76,31 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
         </Text>
         <Box w="full">
           <Text fontSize="3xl" fontWeight="medium">
-            {name === 'Basic' ? '$29' : name === 'Professional' ? '$49' : '$99'}
+            {name === 'Basic' ? '$29' : name === 'Professional' ? '$59' : '$99'}
           </Text>
-          <Text fontSize="sm">per month per site</Text>
+          <Text fontSize="sm">per user per month</Text>
         </Box>
         <Text>Unlock key features and higher usage limits</Text>
         <VStack>
-          <Button size="sm" colorScheme="brand">
+          <Button size="sm" colorScheme="brand"
+            onClick={() => {
+                window.location.href = "/register";
+            }}
+          >
             Free 14-day trial →
           </Button>
         </VStack>
         <VStack pt={8} spacing={4} align="flex-start">
-          <Text fontWeight="medium">Everything in Basic, plus:</Text>
+          <Text fontWeight="medium">{name === 'Basic' ? 'Core features include:' : `Everything in ${name === 'Professional' ? 'Basic' : 'Professional'}, plus:`}</Text>
           <List spacing={3}>
-            <ListItem>
-              <HStack align="flex-start" spacing={1}>
-                <ListIcon as={CheckCircleIcon} color="brand.500" mt={1} />
-                <Text>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                </Text>
-              </HStack>
-            </ListItem>
+            {features[name].map((feature, index) => (
+              <ListItem key={index}>
+                <HStack align="flex-start" spacing={1}>
+                  <ListIcon as={CheckCircleIcon} color="brand.500" mt={1} />
+                  <Text>{feature}</Text>
+                </HStack>
+              </ListItem>
+            ))}
           </List>
         </VStack>
       </VStack>
@@ -90,7 +123,7 @@ export const PricingSection: FunctionComponent<PricingSectionProps> = () => {
       >
         Pricing
       </AnimatedHeading>
-      <SimpleGrid columns={[1, null, 3]} spacing={10}>
+      <SimpleGrid columns={[1, 2, 3]} spacing={10}>
         <PricingBox
           pro={false}
           name="Basic"
