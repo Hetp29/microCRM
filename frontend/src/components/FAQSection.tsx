@@ -47,7 +47,7 @@ const faqs: FAQType[] = [
     }
 ];
 
-// Motion components
+
 const AnimatedBox = motion(Box);
 const AnimatedHeading = motion(Heading);
 const AnimatedAccordion = motion(Accordion);

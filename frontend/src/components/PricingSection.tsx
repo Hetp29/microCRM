@@ -14,7 +14,7 @@ import {
 import { FunctionComponent } from 'react';
 import { motion } from 'framer-motion';
 
-// Animated Box component for Framer Motion
+
 const AnimatedBox = motion(Box);
 const AnimatedHeading = motion(Heading);
 
@@ -27,7 +27,6 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
   pro,
   name,
 }: PricingBoxProps) => {
-  // Define features with a type for the keys
   const features: Record<'Basic' | 'Professional' | 'Enterprise', string[]> = {
     Basic: [
       'Core CRM functionalities',
@@ -62,9 +61,9 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       borderColor={pro ? 'brand.500' : 'gray.200'}
       backgroundColor={pro ? 'brand.50' : 'white'}
       borderWidth={2}
-      height="650px" // Adjust the height
+      height="650px" 
       width="full"
-      maxWidth="450px" // Adjust the max-width
+      maxWidth="450px"
       id="pricing-section"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
