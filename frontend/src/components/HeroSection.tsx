@@ -12,7 +12,7 @@ interface HeroSectionProps {}
 
 export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
     return (
-        <Container maxW="container.lg">
+        <Container maxW="container.lg" mb={1} >
             <Center p={4} minHeight="70vh">
                 <VStack>
                     <Container maxW="container.md" textAlign="center">

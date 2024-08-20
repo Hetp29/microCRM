@@ -1,14 +1,26 @@
-import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
 import { Box } from '@chakra-ui/react';
 import { HeroSection } from './components/HeroSection';
 import { Layout } from './components/Layout';
+import ImageSection from './components/ImageSection';
+
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<HeroSection />} />
+      <Route
+        path="/"
+        element={
+          <Box mb={2} >
+            <HeroSection  /> {/* Reduce margin-bottom */}
+            <Box mt={-114}> {/* Adjust margin-top to bring ImageSection up */}
+              <ImageSection />
+            </Box>
+          </Box>
+        }
+      />
       <Route path="/register" element={<Register />} />
     </Routes>
   );
@@ -25,4 +37,3 @@ export const App = () => {
     </Router>
   );
 };
-
