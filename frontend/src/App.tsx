@@ -6,6 +6,7 @@ import { Layout } from './components/Layout';
 import ImageSection from './components/ImageSection';
 import { FeaturesSection } from './components/Feature';
 import { PricingSection } from './components/PricingSection';
+import { FAQSection } from './components/FAQSection';
 
 const AppRoutes = () => {
   return (
@@ -14,12 +15,13 @@ const AppRoutes = () => {
         path="/"
         element={
           <Box>
-            <HeroSection /> {/* HeroSection component */}
-            <Box mt={-24}> {/* Adjust margin-top to bring ImageSection up */}
-              <ImageSection /> {/* ImageSection component */}
+            <HeroSection /> 
+            <Box mt={-24}> 
+              <ImageSection /> 
             </Box>
-            <FeaturesSection /> {/* FeaturesSection component */}
-            <PricingSection /> {/* Add PricingSection to the landing page */}
+            <FeaturesSection /> 
+            <PricingSection /> 
+            <FAQSection /> 
           </Box>
         }
       />
