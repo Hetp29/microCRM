@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -28,7 +27,6 @@ const Register = () => {
     event.preventDefault();
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/register/`, {
-        username,
         password,
         email,
         name,
@@ -75,15 +73,7 @@ const Register = () => {
       </Box>
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
-          <FormControl id="username" isRequired>
-            <FormLabel>Username</FormLabel>
-            <Input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
-            />
-          </FormControl>
+          
           <FormControl id="name" isRequired>
             <FormLabel>Name</FormLabel>
             <Input
