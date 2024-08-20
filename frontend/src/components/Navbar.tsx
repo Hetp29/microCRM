@@ -22,8 +22,8 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const navLinks = [
   { name: 'About', href: '/about' },
-  { name: 'Features', href: 'features-section' }, // Update href to match id of FeaturesSection
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Features', href: 'features-section' }, 
+  { name: 'Pricing', href: 'pricing-section' },
   { name: 'Solutions', href: '/solutions' },
 ];
 

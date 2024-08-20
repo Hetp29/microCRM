@@ -90,7 +90,14 @@ import {
       >
         <Container maxW="container.xl">
           <Stack spacing={8} mb={12} align="center">
-            <AnimatedHeading size="2xl" mb={4} color="gray.700">
+            <AnimatedHeading
+                size="2xl"
+                mb={4}
+                color="gray.700"
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
               Features
             </AnimatedHeading>
             <AnimatedGrid templateColumns="repeat(3, 1fr)" gap={6}>

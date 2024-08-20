@@ -16,7 +16,12 @@ const ImageSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <MotionHeading size="2xl" mb={14} color="gray.800">
+            <MotionHeading size="2xl" mb={14} 
+                color="gray.700"
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
                 Stay Productive
             </MotionHeading>
             <Box display="flex" justifyContent="center" alignItems="center">

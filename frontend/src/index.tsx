@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { App } from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const rootElement = document.getElementById('root') as HTMLElement;
+
+// Create a root instance only once
+const root = ReactDOM.createRoot(rootElement);
 
 const theme = extendTheme({
   colors: {
@@ -26,7 +29,8 @@ const theme = extendTheme({
   },
 });
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+// Use the existing root instance to render
+root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <App />
