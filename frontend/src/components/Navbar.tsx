@@ -43,16 +43,12 @@ const DesktopSidebarContents = ({ name }: any) => {
           align="center"
         >
           {navLinks.map((navLink: any, i: number) => (
-            <ScrollLink
-              to={navLink.href}
-              smooth={true}
-              duration={500}
-              key={`navlink_${i}`}
-              fontWeight={500}
-              variant="ghost"
-            >
+            <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`}>
+            <Box as="span" fontWeight={500} >
               {navLink.name}
-            </ScrollLink>
+            </Box>
+          </ScrollLink>
+          
           ))}
         </Stack>
       </Flex>
@@ -84,19 +80,12 @@ const MobileSidebar = ({ name }: any) => {
             <DrawerBody>
               <Stack spacing={6} align="center" w="full">
                 {navLinks.map((navLink: any, i: number) => (
-                  <ScrollLink
-                    to={navLink.href}
-                    smooth={true}
-                    duration={500}
-                    key={`navlink_${i}`}
-                    fontWeight={500}
-                    variant="ghost"
-                    width="full"
-                    textAlign="center"
-                    onClick={onClose}
-                  >
+                  <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`} onClick={onClose}>
+                  <Box as="span" fontWeight={500} width="full" textAlign="center">
                     {navLink.name}
-                  </ScrollLink>
+                  </Box>
+                </ScrollLink>
+                
                 ))}
               </Stack>
             </DrawerBody>

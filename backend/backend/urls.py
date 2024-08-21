@@ -4,7 +4,8 @@ from website import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.Home, name='home'), 
-    path('api/register/', views.RegisterUser.as_view(), name='register-user'),
+    path('', views.Home, name='home'),
+    path('register/', views.register, name='register'),
+    #path('', views.Home, name='home'), 
+    path('api/register/', views.register, name='api-register'),
 ]
