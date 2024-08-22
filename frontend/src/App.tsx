@@ -15,7 +15,7 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <Box>
+          <Box bgColor="white">
             <HeroSection />
             <Box mt={-24}>
               <ImageSection />
@@ -39,7 +39,9 @@ export const App = () => {
         <Box
           flex="1"
           bg="white" 
-          p={4} 
+          p={0} // Ensure no padding
+          m={0} // Ensure no margin
+          
         >
           <AppRoutes />
         </Box>

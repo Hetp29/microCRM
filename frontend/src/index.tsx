@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme, CSSReset } from '@chakra-ui/react';
 import { App } from './App';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 
-// Create a root instance only once
 const root = ReactDOM.createRoot(rootElement);
 
 const theme = extendTheme({
@@ -27,9 +26,20 @@ const theme = extendTheme({
     heading: `'Inter', sans-serif`,
     body: `'Inter', sans-serif`,
   },
+  styles: {
+    global: {
+      'html, body': {
+        backgroundColor: 'white', // Ensure the background color is white
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        height: '100%',
+        boxSizing: 'border-box',
+      },
+    },
+  },
 });
 
-// Use the existing root instance to render
 root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
