@@ -67,13 +67,22 @@ const Register = () => {
   };
 
   return (
-    <Container maxW="container.md" py={12} bg="gray.50" borderRadius="md" textColor="gray.500" boxShadow="md">
-      <Box textAlign="center" mb={8}>
+    <Container 
+      maxW="container.md" 
+      py={12} 
+      bg="white" 
+      borderRadius="md" 
+      
+      textColor="gray.500" 
+      boxShadow="md"
+      mt={12}
+      mb={12}
+    >
+      <Box textAlign="center" width="500px" mb={8}>
         <Heading size="lg" mb={4}>Register</Heading>
       </Box>
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
-          
           <FormControl id="name" isRequired>
             <FormLabel>Name</FormLabel>
             <Input
@@ -115,7 +124,6 @@ const Register = () => {
             <Select
               value={employees}
               onChange={(e) => setEmployees(e.target.value)}
-              placeholder="Select number of employees"
             >
               <option value="1-30">1-30</option>
               <option value="31-300">31-300</option>

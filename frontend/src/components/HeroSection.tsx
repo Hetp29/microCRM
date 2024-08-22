@@ -24,10 +24,11 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            bg="transparent"  // Ensure no background color is applied
         >
-            <Center p={4} minHeight="70vh">
-                <VStack>
-                    <MotionContainer maxW="container.md" textAlign="center">
+            <Center p={4} minHeight="70vh" bg="transparent"> {/* Ensure no background color */}
+                <VStack bg="transparent"> {/* Ensure no background color */}
+                    <MotionContainer maxW="container.md" textAlign="center" bg="transparent">
                         <MotionHeading
                             size="2xl"
                             mb={4}
@@ -36,7 +37,7 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            Never track your clients again-let us handle it.
+                            Never track your clients again—let us handle it.
                         </MotionHeading>
                         <MotionText fontSize="cl" color="gray.500">
                             Effortlessly manage client interactions and streamline operations with just a click using our CRM.
@@ -47,7 +48,7 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            Be an early user-dozens of businesses have joined our CRM in the last 30 days!
+                            Be an early user—dozens of businesses have joined our CRM in the last 30 days!
                         </MotionText>
                         <MotionButton 
                             mt={4}
@@ -58,7 +59,6 @@ export const HeroSection: FunctionComponent<HeroSectionProps> = () => {
                         >
                             Get started for free.
                         </MotionButton>
-                        
                     </MotionContainer>
                 </VStack>
             </Center>
