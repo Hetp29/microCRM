@@ -79,6 +79,7 @@ export const FAQSection = ({ items = faqs }: FAQSectionProps) => {
                         initial={{ opacity: 0, y: 50 }} 
                         whileInView={{ opacity: 1, y: 0 }} 
                         transition={{ duration: 0.6 }}
+                        textColor="gray.500"
                     >
                         {items.map((item, i) => (
                             <AccordionItem key={`faq_${i}`}>

@@ -46,7 +46,7 @@ import {
           >
             <VStack maxW={500} spacing={4} align={["center", "flex-start"]}>
               <Box>
-                <Text fontSize="3xl" fontWeight={600} align={["center", "left"]}>
+                <Text fontSize="3xl" fontWeight={600} align={["center", "left"]} textColor="black">
                   {title}
                 </Text>
               </Box>

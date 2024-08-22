@@ -64,22 +64,23 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       height="650px" 
       width="full"
       maxWidth="450px"
+      maxHeight="800px"
       id="pricing-section"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <VStack spacing={3} align="flex-start">
-        <Text fontWeight={600} casing="uppercase" fontSize="sm">
+      <VStack spacing={3} align="flex-start" color="gray.500">
+        <Text  fontWeight={600} casing="uppercase" fontSize="sm">
           {name}
         </Text>
         <Box w="full">
-          <Text fontSize="3xl" fontWeight="medium">
+          <Text fontSize="3xl" color="gray.500" fontWeight="medium">
             {name === 'Basic' ? '$29' : name === 'Professional' ? '$59' : '$99'}
           </Text>
-          <Text fontSize="sm">per user per month</Text>
+          <Text color="gray.500" fontSize="sm">per user per month</Text>
         </Box>
-        <Text>Unlock key features and higher usage limits</Text>
+        <Text color="gray.500">Unlock key features and higher usage limits</Text>
         <VStack>
           <Button size="sm" colorScheme="brand"
             onClick={() => {

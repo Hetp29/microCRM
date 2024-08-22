@@ -67,7 +67,7 @@ const Register = () => {
   };
 
   return (
-    <Container maxW="container.md" py={12} bg="gray.50" borderRadius="md" boxShadow="md">
+    <Container maxW="container.md" py={12} bg="gray.50" borderRadius="md" textColor="gray.500" boxShadow="md">
       <Box textAlign="center" mb={8}>
         <Heading size="lg" mb={4}>Register</Heading>
       </Box>

@@ -29,7 +29,7 @@ const navLinks = [
 
 const DesktopSidebarContents = ({ name }: any) => {
   return (
-    <Container maxW="container.lg" p={0}>
+    <Container maxW="container.lg" p={0} textColor="black">
       <Flex w="full" justify="space-between" align="center">
         <Flex align="center" ml={4}>
           <Link href="/" _hover={{ textDecoration: 'none' }}>
