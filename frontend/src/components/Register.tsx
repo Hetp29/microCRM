@@ -72,58 +72,82 @@ const Register = () => {
       py={12} 
       bg="white" 
       borderRadius="md" 
-      
       textColor="gray.500" 
-      boxShadow="md"
-      mt={12}
-      mb={12}
+      width="800px"
+      px={8} 
     >
-      <Box textAlign="center" width="500px" mb={8}>
-        <Heading size="lg" mb={4}>Register</Heading>
+      <Box textAlign="center" mb={8}>
+        <Heading size="xl" mb={6}>Sign Up</Heading>
       </Box>
       <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
+        <Stack spacing={8}> {/* Increased spacing for better fit */}
           <FormControl id="name" isRequired>
-            <FormLabel>Name</FormLabel>
+            <FormLabel fontSize="lg">Name</FormLabel>
             <Input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your full name"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
           <FormControl id="job-title" isRequired>
-            <FormLabel>Job Title</FormLabel>
+            <FormLabel fontSize="lg">Job Title</FormLabel>
             <Input
               type="text"
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               placeholder="Enter your job title"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
           <FormControl id="email" isRequired>
-            <FormLabel>Email</FormLabel>
+            <FormLabel fontSize="lg">Email</FormLabel>
             <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
-          <FormControl id="phone">
-            <FormLabel>Phone</FormLabel>
+          <FormControl id="phone" isRequired>
+            <FormLabel fontSize="lg">Phone</FormLabel>
             <Input
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
           <FormControl id="employees" isRequired>
-            <FormLabel>Number of Employees</FormLabel>
+            <FormLabel fontSize="lg">Number of Employees</FormLabel>
             <Select
               value={employees}
+              borderColor="gray.300"
+              borderWidth="1px"
+              placeholder="Select number of employees"
+              _placeholder={{ color: 'gray.400' }}
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
               onChange={(e) => setEmployees(e.target.value)}
+              fontSize="md"
             >
               <option value="1-30">1-30</option>
               <option value="31-300">31-300</option>
@@ -132,21 +156,31 @@ const Register = () => {
             </Select>
           </FormControl>
           <FormControl id="company-name" isRequired>
-            <FormLabel>Company Name</FormLabel>
+            <FormLabel fontSize="lg">Company Name</FormLabel>
             <Input
               type="text"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
               placeholder="Enter your company name"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
           <FormControl id="password" isRequired>
-            <FormLabel>Password</FormLabel>
+            <FormLabel fontSize="lg">Password</FormLabel>
             <Input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              _placeholder={{ color: 'gray.400' }}
+              borderColor="gray.300"
+              borderWidth="1px"
+              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+              fontSize="md"
             />
           </FormControl>
           <Button colorScheme="brand" type="submit" size="lg">
