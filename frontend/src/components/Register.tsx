@@ -101,6 +101,7 @@ const Register = () => {
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
                     />
                   </FormControl>
                   <FormControl id="job-title" isRequired>
@@ -109,13 +110,14 @@ const Register = () => {
                       type="text"
                       value={jobTitle}
                       onChange={(e) => setJobTitle(e.target.value)}
-                      placeholder="Enter your job title"
+                      placeholder="Enter your full name"
                       _placeholder={{ color: 'gray.400' }}
                       borderColor="gray.300"
                       borderWidth="1px"
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
                     />
                   </FormControl>
                   <FormControl id="email" isRequired>
@@ -131,6 +133,7 @@ const Register = () => {
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
                     />
                   </FormControl>
                   <FormControl id="phone" isRequired>
@@ -146,10 +149,13 @@ const Register = () => {
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
                     />
                   </FormControl>
                   <FormControl id="employees" isRequired>
-                    <FormLabel fontSize="lg" color="gray.600">Number of Employees</FormLabel>
+                    <FormLabel fontSize="lg" color="gray.600">
+                      Number of Employees
+                    </FormLabel>
                     <Select
                       value={employees}
                       borderColor="gray.300"
@@ -159,27 +165,30 @@ const Register = () => {
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       onChange={(e) => setEmployees(e.target.value)}
                       fontSize="md"
-                      color={employees ? 'black' : 'gray.400'}  
+                      color={employees ? 'black' : 'gray.400'} // This sets the color conditionally
                     >
-                      <option value="1-30">1-30</option>
-                      <option value="31-300">31-300</option>
-                      <option value="301-10,000">301-10,000</option>
-                      <option value="10,001+">10,001+</option>
+                      <option value="1-30" style={{ color: 'black' }}>1-30</option>
+                      <option value="31-300" style={{ color: 'black' }}>31-300</option>
+                      <option value="301-10,000" style={{ color: 'black' }}>301-10,000</option>
+                      <option value="10,001+" style={{ color: 'black' }}>10,001+</option>
                     </Select>
                   </FormControl>
+
                   <FormControl id="company-name" isRequired>
                     <FormLabel fontSize="lg" color="gray.600">Company Name</FormLabel>
                     <Input
                       type="text"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      placeholder="Enter your company name"
+                      placeholder="Enter your full name"
                       _placeholder={{ color: 'gray.400' }}
                       borderColor="gray.300"
                       borderWidth="1px"
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
+                      
                     />
                   </FormControl>
                   <FormControl id="password" isRequired>
@@ -195,6 +204,7 @@ const Register = () => {
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
                       fontSize="md"
+                      textColor='black'
                     />
                   </FormControl>
                   <Button 

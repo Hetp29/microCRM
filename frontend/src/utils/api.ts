@@ -20,3 +20,17 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         console.error('Error during registration:', error);
     }
 };
+
+const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    try {
+        const response = await axios.post(`${API_BASE_URL}/login/`, {
+            enail: formData.get('email') as string,
+            password: formData.get('password') as string,
+        });
+        console.log('User logged in:', response.data);
+    } catch(error) {
+        console.error('Error during login:', error);
+    }
+};

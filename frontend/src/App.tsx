@@ -8,6 +8,8 @@ import { PricingSection } from './components/PricingSection';
 import { FAQSection } from './components/FAQSection';
 import Footer from './components/Footer';
 import { Navbar } from './components/Navbar';
+import Login from './components/Login';
+
 
 const AppRoutes = () => {
   return (
@@ -27,6 +29,7 @@ const AppRoutes = () => {
         }
       />
       <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />}/>
     </Routes>
   );
 };

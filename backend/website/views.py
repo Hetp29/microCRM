@@ -49,11 +49,13 @@ def login_view(request):
             
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                login(request, user)
-                return JsonResponse({'message': 'Login successful'}, status=200)
+                if user.is_active:
+                    login(request, user)
+                    return JsonResponse({'message': 'Login successful'}, status=200)
+                else: 
+                    return JsonResponse({'error': 'Account is disabled'}, status=403)
             else:
                 return JsonResponse({'error': 'Invalid email or password'}, status=400)
-            
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
