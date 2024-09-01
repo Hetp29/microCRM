@@ -214,7 +214,7 @@ const Register = () => {
           {/* Right Side - Image */}
           <Box flex="1" display={{ base: 'none', md: 'block' }}>
             <Image 
-              src="/banner.png" 
+              src="/banner.webp" 
               alt="Signup illustration" 
               objectFit="cover" 
               w="full" 
