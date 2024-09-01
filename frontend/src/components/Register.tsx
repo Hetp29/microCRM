@@ -11,6 +11,8 @@ import {
   Select,
   Stack,
   useToast,
+  Flex,
+  Image,
 } from '@chakra-ui/react';
 
 const Register = () => {
@@ -67,130 +69,161 @@ const Register = () => {
   };
 
   return (
-    <Container 
-      maxW="container.md" 
-      py={12} 
-      bg="white" 
-      borderRadius="md" 
-      textColor="black" 
-      width="800px"
-      px={8} 
-    >
-      <Box textAlign="center" mb={8}>
-        <Heading size="xl" mb={6}>Sign Up</Heading>
+    <Flex minH="100vh" align="center" justify="center" bg="gray.50">
+      <Box 
+        w="full" 
+        maxW="1200px" 
+        mx="auto" 
+        bg="white" 
+        boxShadow="md" 
+        borderRadius="md" 
+        overflow="hidden"
+      >
+        <Flex>
+          {/* Left Side - Form */}
+          <Box flex="1" p={12} bg="white">
+            <Container maxW="container.sm">
+              <Box textAlign="center" mb={8}>
+                <Heading size="xl" mb={6} color="gray.800">Sign Up</Heading>
+              </Box>
+              <form onSubmit={handleSubmit}>
+                <Stack spacing={6}>
+                  <FormControl id="name" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Full Name</FormLabel>
+                    <Input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Enter your full name"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <FormControl id="job-title" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Job Title</FormLabel>
+                    <Input
+                      type="text"
+                      value={jobTitle}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      placeholder="Enter your job title"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <FormControl id="email" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Email Address</FormLabel>
+                    <Input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <FormControl id="phone" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Phone Number</FormLabel>
+                    <Input
+                      type="text"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Enter your phone number"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <FormControl id="employees" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Number of Employees</FormLabel>
+                    <Select
+                      value={employees}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      placeholder="Select number of employees"
+                      _placeholder={{ color: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      onChange={(e) => setEmployees(e.target.value)}
+                      fontSize="md"
+                      color={employees ? 'black' : 'gray.400'}  
+                    >
+                      <option value="1-30">1-30</option>
+                      <option value="31-300">31-300</option>
+                      <option value="301-10,000">301-10,000</option>
+                      <option value="10,001+">10,001+</option>
+                    </Select>
+                  </FormControl>
+                  <FormControl id="company-name" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Company Name</FormLabel>
+                    <Input
+                      type="text"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      placeholder="Enter your company name"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <FormControl id="password" isRequired>
+                    <FormLabel fontSize="lg" color="gray.600">Password</FormLabel>
+                    <Input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="1px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="md"
+                    />
+                  </FormControl>
+                  <Button 
+                    colorScheme="brand" 
+                    type="submit" 
+                    size="lg"
+                    width="full"  
+                    mt={4}  
+                  >
+                    Register
+                  </Button>
+                </Stack>
+              </form>
+            </Container>
+          </Box>
+          
+          {/* Right Side - Image */}
+          <Box flex="1" display={{ base: 'none', md: 'block' }}>
+            <Image 
+              src="/banner.png" 
+              alt="Signup illustration" 
+              objectFit="cover" 
+              w="full" 
+              h="100%"
+            />
+          </Box>
+        </Flex>
       </Box>
-      <form onSubmit={handleSubmit}>
-        <Stack spacing={8}> {/* Increased spacing for better fit */}
-          <FormControl id="name" isRequired>
-            <FormLabel fontSize="lg">Name</FormLabel>
-            <Input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your full name"
-              _placeholder={{ color: 'white' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <FormControl id="job-title" isRequired>
-            <FormLabel fontSize="lg">Job Title</FormLabel>
-            <Input
-              type="text"
-              value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
-              placeholder="Enter your job title"
-              _placeholder={{ color: 'gray.400' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <FormControl id="email" isRequired>
-            <FormLabel fontSize="lg">Email</FormLabel>
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              _placeholder={{ color: 'gray.400' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <FormControl id="phone" isRequired>
-            <FormLabel fontSize="lg">Phone</FormLabel>
-            <Input
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter your phone number"
-              _placeholder={{ color: 'gray.400' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <FormControl id="employees" isRequired>
-          <FormLabel fontSize="lg" color="gray.600">Number of Employees</FormLabel>
-          <Select
-            value={employees}
-            borderColor="gray.300"
-            borderWidth="1px"
-            placeholder="Select number of employees"
-            _placeholder={{ color: 'gray.400' }}
-            _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-            onChange={(e) => setEmployees(e.target.value)}
-            fontSize="md"
-            color={employees ? 'black' : 'gray.400'}  // This line ensures the selected text is black, and placeholder is gray
-          >
-            <option value="1-30">1-30</option>
-            <option value="31-300">31-300</option>
-            <option value="301-10,000">301-10,000</option>
-            <option value="10,001+">10,001+</option>
-          </Select>
-        </FormControl>
-
-          <FormControl id="company-name" isRequired>
-            <FormLabel fontSize="lg">Company Name</FormLabel>
-            <Input
-              type="text"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              placeholder="Enter your company name"
-              _placeholder={{ color: 'gray.400' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <FormControl id="password" isRequired>
-            <FormLabel fontSize="lg">Password</FormLabel>
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              _placeholder={{ color: 'gray.400' }}
-              borderColor="gray.300"
-              borderWidth="1px"
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              fontSize="md"
-            />
-          </FormControl>
-          <Button colorScheme="brand" type="submit" size="lg">
-            Register
-          </Button>
-        </Stack>
-      </form>
-    </Container>
+    </Flex>
   );
 };
 

@@ -8,7 +8,7 @@ const Footer = () => {
       borderTop="1px solid #e0e0e0" 
       boxShadow="0 -4px 6px rgba(0, 0, 0, 0.1)" 
       color="gray.800" 
-      py={4}
+      py={2}
       textAlign="center"
       width="100%"
     >
