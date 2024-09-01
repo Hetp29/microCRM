@@ -99,7 +99,6 @@ const Sidebar = ({ name }: SidebarProps) => {
       bg="white"
       color="gray.800"
       borderBottom="1px solid #e0e0e0"
-      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)" // Enhanced shadow for stronger 3D effect
       position="relative"
       _after={{
         content: '""',
