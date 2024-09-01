@@ -36,7 +36,7 @@ import {
     };
   
     return (
-      <AnimatedBox {...animationProps} w="full" minH="auto" mb={8}>
+      <AnimatedBox {...animationProps} w="full" minH="auto" mb={8} mt={4}>
         <Container maxW="container.xl" rounded="lg">
           <Stack
             spacing={[4, 16]}
@@ -82,7 +82,7 @@ import {
         w="full"
         minH="auto"
         py={12}
-        bg="gray.50"
+        bg="white"
         id="features-section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

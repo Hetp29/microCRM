@@ -57,7 +57,7 @@ export const FAQSection = ({ items = faqs }: FAQSectionProps) => {
         <AnimatedBox
             w="full"
             py={12}
-            bg="gray.50"
+            bg="white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -79,7 +79,7 @@ export const FAQSection = ({ items = faqs }: FAQSectionProps) => {
                         initial={{ opacity: 0, y: 50 }} 
                         whileInView={{ opacity: 1, y: 0 }} 
                         transition={{ duration: 0.6 }}
-                        textColor="gray.500"
+                        textColor="black"
                     >
                         {items.map((item, i) => (
                             <AccordionItem key={`faq_${i}`}>

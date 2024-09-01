@@ -10,7 +10,6 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   IconButton,
   Image,
   Link,
@@ -22,7 +21,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const navLinks = [
   { name: 'About', href: '/about' },
-  { name: 'Features', href: 'features-section' }, 
+  { name: 'Features', href: 'features-section' },
   { name: 'Pricing', href: 'pricing-section' },
   { name: 'Solutions', href: '/solutions' },
 ];
@@ -35,20 +34,14 @@ const DesktopSidebarContents = ({ name }: any) => {
           <Link href="/" _hover={{ textDecoration: 'none' }}>
             <Image src="logo.png" alt="Company Logo" width="170px" />
           </Link>
-          
         </Flex>
-        <Stack
-          spacing={[4, 10]}
-          direction={['column', 'row']}
-          align="center"
-        >
+        <Stack spacing={[4, 10]} direction={['column', 'row']} align="center">
           {navLinks.map((navLink: any, i: number) => (
             <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`}>
-            <Box as="span" fontWeight={500} >
-              {navLink.name}
-            </Box>
-          </ScrollLink>
-          
+              <Box as="span" fontWeight={500}>
+                {navLink.name}
+              </Box>
+            </ScrollLink>
           ))}
         </Stack>
       </Flex>
@@ -72,7 +65,7 @@ const MobileSidebar = ({ name }: any) => {
           icon={<HamburgerIcon />}
           onClick={onOpen}
         />
-        <Drawer isOpen={isOpen} placement='right' onClose={onClose} size="xs">
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="xs">
           <DrawerOverlay />
           <DrawerContent bg="gray.50">
             <DrawerCloseButton />
@@ -81,11 +74,10 @@ const MobileSidebar = ({ name }: any) => {
               <Stack spacing={6} align="center" w="full">
                 {navLinks.map((navLink: any, i: number) => (
                   <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`} onClick={onClose}>
-                  <Box as="span" fontWeight={500} width="full" textAlign="center">
-                    {navLink.name}
-                  </Box>
-                </ScrollLink>
-                
+                    <Box as="span" fontWeight={500} width="full" textAlign="center">
+                      {navLink.name}
+                    </Box>
+                  </ScrollLink>
                 ))}
               </Stack>
             </DrawerBody>
@@ -96,18 +88,33 @@ const MobileSidebar = ({ name }: any) => {
   );
 };
 
-
 interface SidebarProps {
   name: string;
 }
 
 const Sidebar = ({ name }: SidebarProps) => {
   return (
-    <chakra.header id='header'>
+    <chakra.header
+      id="header"
+      bg="white"
+      color="gray.800"
+      borderBottom="1px solid #e0e0e0"
+      boxShadow="0 4px 8px rgba(0, 0, 0, 0.2)" // Enhanced shadow for stronger 3D effect
+      position="relative"
+      _after={{
+        content: '""',
+        position: 'absolute',
+        bottom: '-px', // Bring the shadow closer to the bottom
+        left: '0',
+        width: '100%',
+        height: '6px', // Slightly reduce the height
+        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent)',
+      }} // Adjusted gradient for more depth
+    >
       <Box display={{ base: 'flex', md: 'none' }} p={4}>
         <MobileSidebar name={name} />
       </Box>
-      <Box display={{ base: 'none', md: 'flex' }} bg="gray.50">
+      <Box display={{ base: 'none', md: 'flex' }} bg="white">
         <DesktopSidebarContents />
       </Box>
     </chakra.header>

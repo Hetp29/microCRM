@@ -39,6 +39,7 @@ const ImageSection: React.FC = () => {
                     alt="Description of the image"
                     maxWidth="100%"
                     height="auto"
+                    mb={4}
                     bg="transparent"  // Ensure no background color
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}

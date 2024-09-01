@@ -70,17 +70,17 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <VStack spacing={3} align="flex-start" color="gray.500">
+      <VStack spacing={3} align="flex-start" color="black">
         <Text  fontWeight={600} casing="uppercase" fontSize="sm">
           {name}
         </Text>
         <Box w="full">
-          <Text fontSize="3xl" color="gray.500" fontWeight="medium">
+          <Text fontSize="3xl" color="black" fontWeight="medium">
             {name === 'Basic' ? '$29' : name === 'Professional' ? '$59' : '$99'}
           </Text>
-          <Text color="gray.500" fontSize="sm">per user per month</Text>
+          <Text color="black" fontSize="sm">per user per month</Text>
         </Box>
-        <Text color="gray.500">Unlock key features and higher usage limits</Text>
+        <Text color="black">Unlock key features and higher usage limits</Text>
         <VStack>
           <Button size="sm" colorScheme="brand"
             onClick={() => {
@@ -112,7 +112,7 @@ interface PricingSectionProps {}
 
 export const PricingSection: FunctionComponent<PricingSectionProps> = () => {
   return (
-    <VStack spacing={10} align="center" py={12} bg="gray.50">
+    <VStack spacing={10} align="center" py={12} bg="white">
       <AnimatedHeading
         size="2xl"
         mb={4}
