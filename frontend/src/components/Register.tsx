@@ -72,7 +72,7 @@ const Register = () => {
       py={12} 
       bg="white" 
       borderRadius="md" 
-      textColor="gray.500" 
+      textColor="black" 
       width="800px"
       px={8} 
     >
@@ -88,7 +88,7 @@ const Register = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your full name"
-              _placeholder={{ color: 'gray.400' }}
+              _placeholder={{ color: 'white' }}
               borderColor="gray.300"
               borderWidth="1px"
               _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
@@ -138,23 +138,25 @@ const Register = () => {
             />
           </FormControl>
           <FormControl id="employees" isRequired>
-            <FormLabel fontSize="lg">Number of Employees</FormLabel>
-            <Select
-              value={employees}
-              borderColor="gray.300"
-              borderWidth="1px"
-              placeholder="Select number of employees"
-              _placeholder={{ color: 'gray.400' }}
-              _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-              onChange={(e) => setEmployees(e.target.value)}
-              fontSize="md"
-            >
-              <option value="1-30">1-30</option>
-              <option value="31-300">31-300</option>
-              <option value="301-10,000">301-10,000</option>
-              <option value="10,001+">10,001+</option>
-            </Select>
-          </FormControl>
+          <FormLabel fontSize="lg" color="gray.600">Number of Employees</FormLabel>
+          <Select
+            value={employees}
+            borderColor="gray.300"
+            borderWidth="1px"
+            placeholder="Select number of employees"
+            _placeholder={{ color: 'gray.400' }}
+            _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+            onChange={(e) => setEmployees(e.target.value)}
+            fontSize="md"
+            color={employees ? 'black' : 'gray.400'}  // This line ensures the selected text is black, and placeholder is gray
+          >
+            <option value="1-30">1-30</option>
+            <option value="31-300">31-300</option>
+            <option value="301-10,000">301-10,000</option>
+            <option value="10,001+">10,001+</option>
+          </Select>
+        </FormControl>
+
           <FormControl id="company-name" isRequired>
             <FormLabel fontSize="lg">Company Name</FormLabel>
             <Input
