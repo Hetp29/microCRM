@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
+import {Box, Button, Container, FormControl,
   FormLabel,
   Heading,
   Input,
@@ -42,7 +38,7 @@ const Register = () => {
       console.log('Registration successful:', response.data);
       toast({
         title: 'Registration Successful.',
-        description: 'You have successfully registered.',
+        description: 'A verification email has been sent. Please check your inbox and verify your email.',
         status: 'success',
         duration: 9000,
         isClosable: true,
@@ -69,6 +65,7 @@ const Register = () => {
       }
     }
   };
+  
 
   return (
     <Flex minH="100vh" align="center" justify="center" bg="gray.50" p={12}>

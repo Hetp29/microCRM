@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model, authenticate, login
+from dj_rest_auth.registration.views import RegisterView
+from dj_rest_auth.views import LoginView
 import json
 
 @csrf_exempt
