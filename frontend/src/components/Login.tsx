@@ -55,41 +55,41 @@ const Login = () => {
     <Flex minH="100vh" align="center" justify="center" bg="gray.50" py={12}>
       <Box 
         w="full" 
-        maxW="1200px" 
+        maxW="1600px"
         mx="auto" 
         bg="white" 
         boxShadow="lg" 
         borderRadius="md" 
         overflow="hidden"
       >
-        <Flex>
+        <Flex height="100%">
           {/* Left Side - Form */}
-          <Box flex="1" p={12} bg="white">
-            <Container maxW="container.sm">
-              <Box textAlign="center" mb={12}>
-                <Heading size="xl" mb={6} color="gray.800">Login</Heading>
+          <Box flex="1" p={12} bg="white" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+            <Container maxW="container.sm" textAlign="center">
+              <Box mb={12}>
+                <Heading size="2xl" mb={8} color="gray.800">Login</Heading>
               </Box>
               <form onSubmit={handleLogin}>
                 <Stack spacing={8}>
                   <FormControl id="email" isRequired>
-                    <FormLabel fontSize="lg" color="gray.600">Email Address</FormLabel>
+                    <FormLabel fontSize="xl" color="gray.600">Email Address</FormLabel>
                     <Input
-                      type="email"
+                      type="text"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email address"
+                      placeholder="Enter your full name"
                       _placeholder={{ color: 'gray.400' }}
                       borderColor="gray.300"
-                      borderWidth="1px"
+                      borderWidth="2px"
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-                      fontSize="md"
-                      textColor='black'
+                      fontSize="lg"
                       py={6}
+                      textColor='black'
                     />
                   </FormControl>
                   <FormControl id="password" isRequired>
-                    <FormLabel fontSize="lg" color="gray.600">Password</FormLabel>
+                    <FormLabel fontSize="xl" color="gray.600">Password</FormLabel>
                     <Input
                       type="password"
                       value={password}
@@ -97,12 +97,12 @@ const Login = () => {
                       placeholder="Enter your password"
                       _placeholder={{ color: 'gray.400' }}
                       borderColor="gray.300"
-                      borderWidth="1px"
+                      borderWidth="2px"
                       _hover={{ borderColor: 'gray.400' }}
                       _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
-                      fontSize="md"
-                      textColor='black'
+                      fontSize="lg"
                       py={6}
+                      textColor='black'
                     />
                   </FormControl>
                   <Button 
