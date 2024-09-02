@@ -40,8 +40,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
     "website",
     "corsheaders",
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    "django_otp",
+    "django_otp.plugins.otp_email",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +62,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'corsheaders.middleware.CorsMiddleware',
+    "django_otp.middleware.OTPMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",   
 ]
 
 CORS_ALLOW_ALL_ORIGINS=True
@@ -90,6 +102,14 @@ DATABASES = {
         'PORT': config('DATABASE_PORT'), 
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # Password validation
@@ -134,3 +154,18 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'website.CustomUser'
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+
+OTP_EMAIL_SENDER = config('DEFAULT_FROM_EMAIL')
+OTP_EMAIL_SUBJECT = 'Your One-Time Password'

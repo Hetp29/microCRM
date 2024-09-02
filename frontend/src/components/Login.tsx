@@ -62,7 +62,7 @@ const Login = () => {
         borderRadius="md" 
         overflow="hidden"
       >
-        <Flex height="100%">
+        <Flex height="100%" direction={{ base: 'column', md: 'row' }}>
           {/* Left Side - Form */}
           <Box flex="1" p={12} bg="white" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
             <Container maxW="container.sm" textAlign="center">
