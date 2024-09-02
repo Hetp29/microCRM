@@ -8,7 +8,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     #path('', views.Home, name='home'), 
     path('api/register/', views.register, name='api-register'),
-    path('admin/', include('website.urls')),
+    #path('admin/', include('website.urls')),
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
     path('auth/', include('dj_rest_auth.urls')),
