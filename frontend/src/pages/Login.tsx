@@ -15,7 +15,7 @@ import {
   Text,
   Link
 } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
@@ -23,9 +23,22 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    if (!email || !password) {
+      toast({
+        title: 'Validation Error.',
+        description: 'Please enter both email and password.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      });
+      navigate('/dashboard');
+    }
+    
     try {
       const response = await axios.post(`${API_BASE_URL}/login/`, {
         email,
@@ -39,17 +52,30 @@ const Login = () => {
         duration: 9000,
         isClosable: true,
       });
+      navigate('/dashboard');
     } catch (error) {
-      console.error('Error during login:', error);
-      toast({
-        title: 'Login Error.',
-        description: 'An error occurred during login.',
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
-      });
+      if (axios.isAxiosError(error)) {
+        console.error('Error during login:', error.response?.data);
+        toast({
+          title: 'Login Error.',
+          description: error.response?.data?.message || 'An error occurred during login.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+      } else {
+        console.error('Unexpected error during login:', error);
+        toast({
+          title: 'Login Error.',
+          description: 'An unexpected error occurred during login.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+      }
     }
   };
+  
 
   return (
     <Flex minH="100vh" align="center" justify="center" bg="gray.50" py={12}>

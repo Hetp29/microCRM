@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Box, Button, Container, FormControl,
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
   FormLabel,
   Heading,
   Input,
@@ -12,6 +16,8 @@ import {Box, Button, Container, FormControl,
   Text,
   Link,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
   const [password, setPassword] = useState('');
@@ -22,6 +28,7 @@ const Register = () => {
   const [employees, setEmployees] = useState('');
   const [companyName, setCompanyName] = useState('');
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -36,13 +43,17 @@ const Register = () => {
         company_name: companyName
       });
       console.log('Registration successful:', response.data);
+  
+
       toast({
         title: 'Registration Successful.',
-        description: 'A verification email has been sent. Please check your inbox and verify your email.',
+        description: 'You have successfully registered.',
         status: 'success',
         duration: 9000,
         isClosable: true,
       });
+
+      navigate('/dashboard');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Axios error during registration:', error.response?.data);

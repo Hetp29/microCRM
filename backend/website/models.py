@@ -1,10 +1,9 @@
-#models.py
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, name, job_title, phone, employees, company_name, password=None, **extra_fields):
+    def create_user(self, email, name, job_title, phone, employees, company_name, password=None):
         """
         Create and return a regular user with an email and password.
         """
@@ -17,8 +16,7 @@ class CustomUserManager(BaseUserManager):
             job_title=job_title,
             phone=phone,
             employees=employees,
-            company_name=company_name,
-            **extra_fields
+            company_name=company_name
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -49,10 +47,9 @@ class CustomUser(AbstractBaseUser):
     phone = models.CharField(max_length=15, blank=True, null=True)
     employees = models.CharField(max_length=20)
     company_name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 
@@ -66,10 +63,10 @@ class CustomUser(AbstractBaseUser):
         """
         Check if the user has a specific permission.
         """
-        return self.is_superuser or super().has_perm(perm, obj)  # Superusers have all permissions.
+        return True  # Superusers have all permissions.
 
     def has_module_perms(self, app_label):
         """
         Check if the user has permissions to view the app `app_label`.
         """
-        return self.is_superuser or super().has_module_perms(app_label)  # Superuser
+        return True  # Superuser

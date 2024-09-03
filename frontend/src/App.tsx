@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './components/Register';
+import Register from './pages/Register';
 import { HeroSection } from './components/HeroSection';
 import ImageSection from './components/ImageSection';
 import { FeaturesSection } from './components/Feature';
@@ -8,7 +8,8 @@ import { PricingSection } from './components/PricingSection';
 import { FAQSection } from './components/FAQSection';
 import Footer from './components/Footer';
 import { Navbar } from './components/Navbar';
-import Login from './components/Login';
+import Login from './pages/Login';
+import Dashboard from './dashboard/Dashboard';
 
 
 const AppRoutes = () => {
@@ -30,6 +31,7 @@ const AppRoutes = () => {
       />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />}/>
+      <Route path='/dashboard' element={<Dashboard />} />
     </Routes>
   );
 };
