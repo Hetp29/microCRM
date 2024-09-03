@@ -32,13 +32,13 @@ const DesktopSidebarContents = ({ name }: any) => {
       <Flex w="full" justify="space-between" align="center">
         <Flex align="center" ml={4}>
           <Link href="/" _hover={{ textDecoration: 'none' }}>
-            <Image src="logo.png" alt="Company Logo" width="170px" />
+            <Image src="logo.png" alt="Company Logo" width="150px" />
           </Link>
         </Flex>
         <Stack spacing={[4, 10]} direction={['column', 'row']} align="center">
           {navLinks.map((navLink: any, i: number) => (
             <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`}>
-              <Box as="span" fontWeight={500}>
+              <Box as="span" fontWeight={500} color="black"> {/* Ensure text color is black */}
                 {navLink.name}
               </Box>
             </ScrollLink>
@@ -54,27 +54,30 @@ const MobileSidebar = ({ name }: any) => {
 
   return (
     <>
-      <Flex w="full" align="center" p={4} justify="space-between">
+      <Flex w="full" align="center" p={2} justify="space-between">
         <Flex align="center">
           <Link href="/" _hover={{ textDecoration: 'none' }}>
-            <Image src="logo.png" alt="Company Logo" width="170px" />
+            <Image src="logo.png" alt="Company Logo" width="120px" />
           </Link>
         </Flex>
         <IconButton
           aria-label="Open menu"
           icon={<HamburgerIcon />}
           onClick={onOpen}
+          variant="outline"
+          color="black"  // Change the icon color to black
+          size="md"
         />
         <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="xs">
           <DrawerOverlay />
           <DrawerContent bg="gray.50">
-            <DrawerCloseButton />
-            <DrawerHeader>{name}</DrawerHeader>
+            <DrawerCloseButton color="black" /> {/* Ensure the close button is black */}
+            <DrawerHeader color="black">{name}</DrawerHeader> {/* Ensure header text is black */}
             <DrawerBody>
               <Stack spacing={6} align="center" w="full">
                 {navLinks.map((navLink: any, i: number) => (
                   <ScrollLink to={navLink.href} smooth={true} duration={500} key={`navlink_${i}`} onClick={onClose}>
-                    <Box as="span" fontWeight={500} width="full" textAlign="center">
+                    <Box as="span" fontWeight={500} width="full" textAlign="center" color="black"> {/* Ensure text color is black */}
                       {navLink.name}
                     </Box>
                   </ScrollLink>
@@ -103,14 +106,14 @@ const Sidebar = ({ name }: SidebarProps) => {
       _after={{
         content: '""',
         position: 'absolute',
-        bottom: '-px', // Bring the shadow closer to the bottom
+        bottom: '0px',
         left: '0',
         width: '100%',
-        height: '6px', // Slightly reduce the height
+        height: '6px',
         background: 'linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent)',
-      }} // Adjusted gradient for more depth
+      }}
     >
-      <Box display={{ base: 'flex', md: 'none' }} p={4}>
+      <Box display={{ base: 'flex', md: 'none' }} p={2}>
         <MobileSidebar name={name} />
       </Box>
       <Box display={{ base: 'none', md: 'flex' }} bg="white">
