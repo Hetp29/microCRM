@@ -2,6 +2,14 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib.auth.models import User
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404
 import json
 
 @csrf_exempt
@@ -61,6 +69,30 @@ def login_view(request):
     else:
         return JsonResponse({'error': 'Only POST method is allowed'}, status=405)
             
+@api_view
+def password_reset_request(request):
+    email = request.data.get('email')
+    
+    if not email: 
+        return Response({'message': 'Email is required.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    try:
+        user = get_object_or_404(User, email=email)
+        token = default_token_generator.make_token(user)
+        reset_url = f"{settings.FRONTEND_URL}/reset-password?token={token}&uid={user.pk}"
+        send_mail(
+            'Password Reset Request',
+            f'Click the link to reset your password: {reset_url}',
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
+        
+        return Response({'message': 'Password reset link sent.'}, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 def Home(request):
     return render(request, 'home.html')
