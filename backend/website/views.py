@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
+import logging
 import json
 
 @csrf_exempt
@@ -69,17 +70,27 @@ def login_view(request):
     else:
         return JsonResponse({'error': 'Only POST method is allowed'}, status=405)
             
+
+logger = logging.getLogger(__name__)
+
 @api_view(['POST'])
 def password_reset_request(request):
     email = request.data.get('email')
     
     if not email: 
+        logger.error("No email provided")
         return Response({'message': 'Email is required.'}, status=status.HTTP_400_BAD_REQUEST)
     
     try:
-        user = get_object_or_404(User, email=email)
+        User = get_user_model()
+        user = User.objects.filter(email__iexact=email).first()
+        if user is None:
+            return Response({'message': 'User with this email does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+        logger.info(f"User found: {user.email}")
         token = default_token_generator.make_token(user)
         reset_url = f"{settings.FRONTEND_URL}/reset-password?token={token}&uid={user.pk}"
+
+        logger.info(f"Reset URL: {reset_url}")
         send_mail(
             'Password Reset Request',
             f'Click the link to reset your password: {reset_url}',
@@ -88,10 +99,13 @@ def password_reset_request(request):
             fail_silently=False,
         )
         
+        logger.info("Password reset email sent successfully")
         return Response({'message': 'Password reset link sent.'}, status=status.HTTP_200_OK)
     
     except Exception as e:
+        logger.error(f"Error during password reset: {str(e)}")
         return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @api_view(['POST'])
 def reset_password(request):
