@@ -35,11 +35,11 @@ const ForgotPassword = () => {
 
   return (
     <Box textAlign="center" py={20}>
-      <Heading size="2xl" mb={8}>Forgot Password</Heading>
+      <Heading textColor="black" size="2xl" mb={8}>Forgot Password</Heading>
       <form onSubmit={handleForgotPassword}>
         <Stack spacing={6} maxW="400px" mx="auto">
           <FormControl id="email" isRequired>
-            <FormLabel>Enter your email</FormLabel>
+            <FormLabel textColor="black">Enter your email</FormLabel>
             <Input
               type="email"
               value={email}

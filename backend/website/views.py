@@ -69,7 +69,7 @@ def login_view(request):
     else:
         return JsonResponse({'error': 'Only POST method is allowed'}, status=405)
             
-@api_view
+@api_view(['POST'])
 def password_reset_request(request):
     email = request.data.get('email')
     
@@ -93,6 +93,28 @@ def password_reset_request(request):
     except Exception as e:
         return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@api_view(['POST'])
+def reset_password(request):
+    token = request.data.get('token')
+    uid = request.data.get('uid')
+    new_password = request.data.get('password')
+    
+    if not all([token, uid, new_password]):
+        return Response({'message': 'Missing required fields.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    try: 
+        user = get_object_or_404(User, pk=uid)
+        
+        if not default_token_generator.check_token(user, token):
+            return Response({'message': 'Invalid or expired token.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        user.set_password(new_password)
+        user.save()
+        
+        return Response({'message': 'Password successfully reset.'}, status=status.HTTP_200_OK)
+    
+    except Exception as e:
+        return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def Home(request):
     return render(request, 'home.html')
