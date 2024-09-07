@@ -46,7 +46,8 @@ const ForgotPassword = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               size="lg"
-              borderColor="gray.300"
+              borderColor="black"
+              textColor="black"
             />
           </FormControl>
           <Button colorScheme="blue" type="submit" size="lg" width="full">
