@@ -131,6 +131,14 @@ const Login = () => {
                       textColor='black'
                     />
                   </FormControl>
+
+                  <Text textAlign="center" mt={2} textColor="black">
+                    Forgot your password?{' '}
+                    <Link as={RouterLink} to="/forgot-password" color="blue.500">
+                      Reset it here.
+                    </Link>
+                  </Text>
+
                   <Button 
                     colorScheme="brand" 
                     type="submit" 

@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import { Navbar } from './components/Navbar';
 import Login from './pages/Login';
 import Dashboard from './dashboard/Dashboard';
+import ForgotPassword from './pages/ForgotPassword';
 
 
 const AppRoutes = () => {
@@ -32,6 +33,7 @@ const AppRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />}/>
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Routes>
   );
 };
