@@ -1,5 +1,6 @@
 import { Box, VStack, Link, Text, Icon } from '@chakra-ui/react';
-import { FaHome, FaUsers, FaEnvelope, FaChartline, FaCogs, FaLayerGroup, FaShieldAlt } from 'react-icons/fa';
+import { FaHome, FaUsers, FaEnvelope, FaCogs, FaLayerGroup, FaShieldAlt, FaChartLine } from 'react-icons/fa';
+
 
 export const Sidebar = ({ userTier }: { userTier: 'Basic' | 'Professional' | 'Enterprise' }) => {
     return (
