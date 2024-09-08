@@ -8,7 +8,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api
 const ResetPassword = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [searchParams] = useSearchParams(); // To get token from URL
+  const [searchParams] = useSearchParams(); 
   const token = searchParams.get('token');
   const uid = searchParams.get('uid');
   const toast = useToast();
@@ -26,6 +26,9 @@ const ResetPassword = () => {
       });
       return;
     }
+
+    console.log('Token:', token)
+    console.log('UID:', uid)
 
     try {
       await axios.post(`${API_BASE_URL}/reset-password/`, { password, token, uid });
