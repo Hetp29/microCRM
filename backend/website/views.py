@@ -107,27 +107,35 @@ def password_reset_request(request):
         return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+logger = logging.getLogger(__name__)
 @api_view(['POST'])
 def reset_password(request):
     token = request.data.get('token')
     uid = request.data.get('uid')
     new_password = request.data.get('password')
     
+    logger.info(f"Token: {token}, UID: {uid}, New Password: {new_password}")
+    
     if not all([token, uid, new_password]):
+        logger.error("Missing required fields.")
         return Response({'message': 'Missing required fields.'}, status=status.HTTP_400_BAD_REQUEST)
     
     try: 
         user = get_object_or_404(User, pk=uid)
+        logger.info(f"User found: {user.email}")
         
         if not default_token_generator.check_token(user, token):
+            logger.error("Invalid or expired token.")
             return Response({'message': 'Invalid or expired token.'}, status=status.HTTP_400_BAD_REQUEST)
         
         user.set_password(new_password)
         user.save()
+        logger.info("Password reset successfully.")
         
         return Response({'message': 'Password successfully reset.'}, status=status.HTTP_200_OK)
     
     except Exception as e:
+        logger.error(f"Error during password reset: {str(e)}")
         return Response({'message': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def Home(request):
