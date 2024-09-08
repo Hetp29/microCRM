@@ -1,5 +1,3 @@
-// src/ResetPassword.tsx
-
 import React, { useState } from 'react';
 import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, useToast } from '@chakra-ui/react';
 import axios from 'axios';
@@ -12,6 +10,7 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [searchParams] = useSearchParams(); // To get token from URL
   const token = searchParams.get('token');
+  const uid = searchParams.get('uid');
   const toast = useToast();
 
   const handleResetPassword = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +28,7 @@ const ResetPassword = () => {
     }
 
     try {
-      await axios.post(`${API_BASE_URL}/reset-password/`, { password, token });
+      await axios.post(`${API_BASE_URL}/reset-password/`, { password, token, uid });
       toast({
         title: 'Password Reset Successful.',
         description: 'Your password has been updated.',
