@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, useToast } from '@chakra-ui/react';
 import axios from 'axios';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
@@ -12,6 +12,7 @@ const ResetPassword = () => {
   const token = searchParams.get('token');
   const uid = searchParams.get('uid');
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleResetPassword = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,6 +40,9 @@ const ResetPassword = () => {
         duration: 9000,
         isClosable: true,
       });
+
+      navigate('/login');
+      
     } catch (error) {
       toast({
         title: 'Error.',
