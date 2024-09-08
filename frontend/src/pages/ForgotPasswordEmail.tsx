@@ -1,8 +1,21 @@
-
-
 import React, { useState } from 'react';
-import { Box, Button, FormControl, FormLabel, Heading, Input, Stack, useToast } from '@chakra-ui/react';
 import axios from 'axios';
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Stack,
+  useToast,
+  Flex,
+  Image,
+  Text,
+  Link
+} from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
@@ -13,7 +26,6 @@ const ForgotPassword = () => {
   const handleForgotPassword = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-
     try {
       await axios.post(`${API_BASE_URL}/forgot-password/`, { email });
       toast({
@@ -35,28 +47,76 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Box textAlign="center" py={20}>
-      <Heading textColor="black" size="2xl" mb={8}>Forgot Password</Heading>
-      <form onSubmit={handleForgotPassword}>
-        <Stack spacing={6} maxW="400px" mx="auto">
-          <FormControl id="email" isRequired>
-            <FormLabel textColor="black">Enter your email</FormLabel>
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              size="lg"
-              borderColor="black"
-              textColor="black"
+    <Flex minH="100vh" align="center" justify="center" bg="gray.50" py={12}>
+      <Box 
+        w="full" 
+        maxW="1600px"
+        mx="auto" 
+        bg="white" 
+        boxShadow="lg" 
+        borderRadius="md" 
+        overflow="hidden"
+      >
+        <Flex height="100%" direction={{ base: 'column', md: 'row' }}>
+          <Box flex="1" p={12} bg="white" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+            <Container maxW="container.sm" textAlign="center">
+              <Box mb={12}>
+                <Heading size="2xl" mb={8} color="gray.800">Forgot Password</Heading>
+              </Box>
+              <form onSubmit={handleForgotPassword}>
+                <Stack spacing={8}>
+                  <FormControl id="email" isRequired>
+                    <FormLabel fontSize="xl" color="gray.600">Enter your email</FormLabel>
+                    <Input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      _placeholder={{ color: 'gray.400' }}
+                      borderColor="gray.300"
+                      borderWidth="2px"
+                      _hover={{ borderColor: 'gray.400' }}
+                      _focus={{ borderColor: 'blue.500', boxShadow: 'none' }}
+                      fontSize="lg"
+                      py={6}
+                      textColor="black"
+                    />
+                  </FormControl>
+
+                  <Button 
+                    colorScheme="brand" 
+                    type="submit" 
+                    size="lg"
+                    width="full"  
+                    mt={4}  
+                    py={6}
+                  >
+                    Send Reset Link
+                  </Button>
+
+                  <Text textAlign="center" mt={4} textColor="black">
+                    Remember your password?{' '}
+                    <Link as={RouterLink} to="/login" color="blue.500">
+                      Go back to login.
+                    </Link>
+                  </Text>
+                </Stack>
+              </form>
+            </Container>
+          </Box>
+          
+          <Box flex="1" display={{ base: 'none', md: 'block' }}>
+            <Image 
+              src="/banner.webp" 
+              alt="Forgot password illustration" 
+              objectFit="cover" 
+              w="full" 
+              h="100%"
             />
-          </FormControl>
-          <Button colorScheme="blue" type="submit" size="lg" width="full">
-            Send Reset Link
-          </Button>
-        </Stack>
-      </form>
-    </Box>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 
