@@ -4,7 +4,7 @@ import { FaHome, FaUsers, FaEnvelope, FaCogs, FaLayerGroup, FaShieldAlt, FaChart
 
 export const Sidebar = ({ userTier }: { userTier: 'Basic' | 'Professional' | 'Enterprise' }) => {
     return (
-      <Box bg="gray.800" w="250px" h="100vh" color="white" p={4}>
+      <Box bg="white" w="250px" h="100vh" color="black" p={4}>
         <VStack align="start" spacing={4}>
           <Link href="/dashboard">
             <Icon as={FaHome} mr={2} />

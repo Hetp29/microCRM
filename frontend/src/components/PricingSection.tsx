@@ -46,9 +46,9 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       'Everything in Professional, plus:',
       'Enterprise-grade security and compliance features',
       'Dedicated account manager',
-      'Advanced customization options (e.g., custom fields, complex workflows)',
-      'Multi-channel support (e.g., phone, chat, email)',
-      'Extensive integration options with other enterprise systems (e.g., ERP systems, advanced analytics platforms)'
+      'Advanced customization options ',
+      'Multi-channel support ',
+      'Extensive integration options with other enterprise systems'
     ]
   };
 
@@ -63,8 +63,8 @@ export const PricingBox: FunctionComponent<PricingBoxProps> = ({
       borderWidth={2}
       height="650px" 
       width="full"
-      maxWidth="450px"
-      maxHeight="800px"
+      maxWidth="350px"
+      maxHeight="8000px"
       id="pricing-section"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

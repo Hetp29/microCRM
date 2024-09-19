@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { Sidebar } from './Sidebar';
-
+import { Sidebar } from './Sidebar'; // Keep the Sidebar component
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  
   const handleLogout = () => {
     navigate('/');
   };
@@ -17,7 +17,7 @@ const Dashboard = () => {
 
       {/* Main Dashboard Content */}
       <Box p={8} textAlign="center" flex="1" bg="gray.50">
-        <Heading as="h1" size="2xl" mb={4}>
+        <Heading as="h1" size="2xl" textColor="black" mb={4}>
           Welcome to ClientSync
         </Heading>
         <Text fontSize="lg" color="gray.600">
