@@ -14,5 +14,6 @@ urlpatterns = [
     path('', include('website.urls')),
     path('api/forgot-password/', views.password_reset_request, name='password_reset_request'),
     path('api/reset-password/', views.reset_password, name='reset_password'),
+    path('contacts/', include('contacts.urls')) #include contact app URLs
     
 ]
