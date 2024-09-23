@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
               </Button>
             </>
           }/>
-          <Route path="/contacts" element={<ContactsList />} /> {/* Contact Management */}
+          <Route path="/contacts/" element={<ContactsList />} /> {/* Contact Management */}
         </Routes>
       </Box>
     </Flex>
