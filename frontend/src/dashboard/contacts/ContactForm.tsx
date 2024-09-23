@@ -35,7 +35,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
     };
   
     if (editingContact) {
-      axios.put(`http://localhost:8000/contacts/${editingContact.id}/`, contactData)  // Include ID in the URL
+      axios.put(`http://localhost:8000/contacts/contacts/${editingContact.id}/`, contactData)
         .then(response => {
           setContacts(prevContacts => 
             prevContacts.map(contact => contact.id === response.data.id ? response.data : contact)
@@ -44,7 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
         })
         .catch(error => console.error('Error updating contact:', error));
     } else {
-      axios.post('http://localhost:8000/contacts/', contactData)
+      axios.post('http://localhost:8000/contacts/contacts/', contactData)
         .then(response => setContacts(prevContacts => [...prevContacts, response.data]))
         .catch(error => console.error('Error creating contact:', error));
     }
