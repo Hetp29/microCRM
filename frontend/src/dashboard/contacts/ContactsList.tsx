@@ -8,7 +8,7 @@ const ContactsList: React.FC = () => {
   const [editingContact, setEditingContact] = useState<Contact | null>(null);
 
   useEffect(() => {
-    axios.get('/contacts/')
+    axios.get('/contacts')
       .then(response => setContacts(response.data))
       .catch(error => console.error('Error fetching contacts:', error));
   }, []);

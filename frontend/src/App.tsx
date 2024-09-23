@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Dashboard from './dashboard/Dashboard';
 import ForgotPassword from './pages/ForgotPasswordEmail';
 import ResetPassword from './pages/ResetPassword';
+import ContactsList from './dashboard/contacts/ContactsList';
 
 
 const AppRoutes = () => {
@@ -36,6 +37,7 @@ const AppRoutes = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/contacts" element={<ContactsList />}/>
     </Routes>
   );
 };

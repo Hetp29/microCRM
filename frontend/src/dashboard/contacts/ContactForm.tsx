@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Contact } from './types'; // Import the shared Contact type
+import { Contact } from './types'; 
 
 interface ContactFormProps {
   setContacts: React.Dispatch<React.SetStateAction<Contact[]>>;
@@ -35,7 +35,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
     };
 
     if (editingContact) {
-      axios.put(`/contacts/${editingContact.id}/`, contactData)
+      axios.put(`/contacts${editingContact.id}/`, contactData)
         .then(response => {
           setContacts(prevContacts => 
             prevContacts.map(contact => contact.id === response.data.id ? response.data : contact)
@@ -44,7 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
         })
         .catch(error => console.error('Error updating contact:', error));
     } else {
-      axios.post('/contacts/', contactData)
+      axios.post('/contacts', contactData)
         .then(response => setContacts(prevContacts => [...prevContacts, response.data]))
         .catch(error => console.error('Error creating contact:', error));
     }
