@@ -25,7 +25,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     const contactData: Contact = { 
       id: editingContact ? editingContact.id : 0,  // Assign a default value for new contacts
       name, 
@@ -33,9 +33,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
       phone_number: phoneNumber, 
       company 
     };
-
+  
     if (editingContact) {
-      axios.put(`/contacts${editingContact.id}/`, contactData)
+      axios.put(`http://localhost:8000/contacts/${editingContact.id}/`, contactData)  // Include ID in the URL
         .then(response => {
           setContacts(prevContacts => 
             prevContacts.map(contact => contact.id === response.data.id ? response.data : contact)
@@ -44,16 +44,17 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
         })
         .catch(error => console.error('Error updating contact:', error));
     } else {
-      axios.post('/contacts', contactData)
+      axios.post('http://localhost:8000/contacts/', contactData)
         .then(response => setContacts(prevContacts => [...prevContacts, response.data]))
         .catch(error => console.error('Error creating contact:', error));
     }
-
+  
     setName('');
     setEmail('');
     setPhoneNumber('');
     setCompany('');
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -84,7 +85,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
         value={company} 
         onChange={(e) => setCompany(e.target.value)} 
       />
-      <button type="submit">{editingContact ? 'Update Contact' : 'Add Contact'}</button>
+      <button type="submit" style={{ backgroundColor: 'black', color: 'white' }}>
+        {editingContact ? 'Update Contact' : 'Add Contact'}
+      </button>
+
     </form>
   );
 };
