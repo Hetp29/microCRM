@@ -58,54 +58,90 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
   };
 
   return (
-    <Box as="form" onSubmit={handleSubmit} p={4} shadow="md" borderWidth="1px" borderRadius="lg">
+    <Box 
+      as="form" 
+      onSubmit={handleSubmit} 
+      p={6} 
+      bg="gray.50" 
+      borderRadius="md" 
+      border="1px solid" 
+      borderColor="gray.200" 
+      shadow="md" 
+    >
       <Stack spacing={4}>
-        {/* Name */}
+        
         <FormControl isRequired>
-          <FormLabel>Name</FormLabel>
+          <FormLabel color="black">Name</FormLabel>
           <Input 
             type="text" 
+            color="black"
             placeholder="Enter Name" 
             value={name} 
             onChange={(e) => setName(e.target.value)} 
+            bg="white" 
+            borderColor="gray.300"
+            _hover={{ borderColor: "gray.400" }} // Input hover effect
+            _focus={{ borderColor: "blue.500", boxShadow: "outline" }} // Focus effect
           />
         </FormControl>
 
-        {/* Email */}
+
         <FormControl isRequired>
-          <FormLabel>Email</FormLabel>
+          <FormLabel color="black">Email</FormLabel>
           <Input 
             type="email" 
+            color="black"
             placeholder="Enter Email" 
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
+            bg="white" 
+            borderColor="gray.300"
+            _hover={{ borderColor: "gray.400" }} 
+            _focus={{ borderColor: "blue.500", boxShadow: "outline" }}
           />
         </FormControl>
 
-        {/* Phone Number */}
+        
         <FormControl isRequired>
-          <FormLabel>Phone Number</FormLabel>
+          <FormLabel color="black">Phone Number</FormLabel>
           <Input 
             type="text" 
+            color="black"
             placeholder="Enter Phone Number" 
             value={phoneNumber} 
             onChange={(e) => setPhoneNumber(e.target.value)} 
+            bg="white" 
+            borderColor="gray.300"
+            _hover={{ borderColor: "gray.400" }} 
+            _focus={{ borderColor: "blue.500", boxShadow: "outline" }}
           />
         </FormControl>
 
-        {/* Company */}
+        
         <FormControl>
-          <FormLabel>Company</FormLabel>
+          <FormLabel color="black">Company</FormLabel>
           <Input 
             type="text" 
+            color="black"
             placeholder="Enter Company" 
             value={company} 
             onChange={(e) => setCompany(e.target.value)} 
+            bg="white" 
+            borderColor="gray.300"
+            _hover={{ borderColor: "gray.400" }} 
+            _focus={{ borderColor: "blue.500", boxShadow: "outline" }}
           />
         </FormControl>
 
-        {/* Submit Button */}
-        <Button type="submit" colorScheme="blue">
+        
+        <Button 
+          type="submit" 
+          colorScheme="blue" 
+          width="full" 
+          bg="blue.500" 
+          color="white" 
+          _hover={{ bg: "blue.600" }}
+        >
           {editingContact ? 'Update Contact' : 'Add Contact'}
         </Button>
       </Stack>
