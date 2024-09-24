@@ -15,6 +15,7 @@ import ResetPassword from './pages/ResetPassword';
 import ContactsList from './dashboard/contacts/ContactsList';
 import { useState } from 'react';
 import { Contact } from './dashboard/contacts/types';
+import ContactsPage from './dashboard/contacts/ContactsPage';
 
 
 const AppRoutes = () => {
@@ -40,7 +41,7 @@ const AppRoutes = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/contacts" element={<ContactsList setSelectedContact={setSelectedContact}/>}/>
+      <Route path="/contacts" element={<ContactsPage/>}/>
     </Routes>
   );
 };
