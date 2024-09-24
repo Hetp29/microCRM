@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import { Sidebar } from './Sidebar'; // Keep the Sidebar component
 import ContactsList from './contacts/ContactsList'; // Import the ContactsList component
+import { Contact } from './contacts/types';
 
 const Dashboard: React.FC = () => {
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const navigate = useNavigate();
   
   const handleLogout = () => {
@@ -13,10 +15,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <Flex h="100vh">
-      {/* Sidebar */}
+      
       <Sidebar userTier="Professional" /> 
 
-      {/* Main Dashboard Content */}
+      
       <Box p={8} textAlign="center" flex="1" bg="gray.50">
         <Routes>
           <Route path="/" element={
@@ -32,7 +34,7 @@ const Dashboard: React.FC = () => {
               </Button>
             </>
           }/>
-          <Route path="/contacts/" element={<ContactsList />} /> {/* Contact Management */}
+          <Route path="/contacts/" element={<ContactsList setSelectedContact={setSelectedContact}/>} /> {/* Contact Management */}
         </Routes>
       </Box>
     </Flex>

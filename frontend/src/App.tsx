@@ -13,9 +13,12 @@ import Dashboard from './dashboard/Dashboard';
 import ForgotPassword from './pages/ForgotPasswordEmail';
 import ResetPassword from './pages/ResetPassword';
 import ContactsList from './dashboard/contacts/ContactsList';
+import { useState } from 'react';
+import { Contact } from './dashboard/contacts/types';
 
 
 const AppRoutes = () => {
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   return (
     <Routes>
       <Route
@@ -37,7 +40,7 @@ const AppRoutes = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/contacts" element={<ContactsList />}/>
+      <Route path="/contacts" element={<ContactsList setSelectedContact={setSelectedContact}/>}/>
     </Routes>
   );
 };

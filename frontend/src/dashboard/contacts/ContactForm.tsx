@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Contact } from './types'; 
+import { Box, FormControl, FormLabel, Input, Button, Stack } from '@chakra-ui/react'; // Import Chakra components
 
 interface ContactFormProps {
   setContacts: React.Dispatch<React.SetStateAction<Contact[]>>;
@@ -49,47 +50,66 @@ const ContactForm: React.FC<ContactFormProps> = ({ setContacts, editingContact, 
         .catch(error => console.error('Error creating contact:', error));
     }
   
+    // Clear form fields after submission
     setName('');
     setEmail('');
     setPhoneNumber('');
     setCompany('');
   };
-  
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        placeholder="Name" 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        required 
-      />
-      <input 
-        type="email" 
-        placeholder="Email" 
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        required 
-      />
-      <input 
-        type="text" 
-        placeholder="Phone Number" 
-        value={phoneNumber} 
-        onChange={(e) => setPhoneNumber(e.target.value)} 
-        required 
-      />
-      <input 
-        type="text" 
-        placeholder="Company" 
-        value={company} 
-        onChange={(e) => setCompany(e.target.value)} 
-      />
-      <button type="submit" style={{ backgroundColor: 'black', color: 'white' }}>
-        {editingContact ? 'Update Contact' : 'Add Contact'}
-      </button>
+    <Box as="form" onSubmit={handleSubmit} p={4} shadow="md" borderWidth="1px" borderRadius="lg">
+      <Stack spacing={4}>
+        {/* Name */}
+        <FormControl isRequired>
+          <FormLabel>Name</FormLabel>
+          <Input 
+            type="text" 
+            placeholder="Enter Name" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+          />
+        </FormControl>
 
-    </form>
+        {/* Email */}
+        <FormControl isRequired>
+          <FormLabel>Email</FormLabel>
+          <Input 
+            type="email" 
+            placeholder="Enter Email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+          />
+        </FormControl>
+
+        {/* Phone Number */}
+        <FormControl isRequired>
+          <FormLabel>Phone Number</FormLabel>
+          <Input 
+            type="text" 
+            placeholder="Enter Phone Number" 
+            value={phoneNumber} 
+            onChange={(e) => setPhoneNumber(e.target.value)} 
+          />
+        </FormControl>
+
+        {/* Company */}
+        <FormControl>
+          <FormLabel>Company</FormLabel>
+          <Input 
+            type="text" 
+            placeholder="Enter Company" 
+            value={company} 
+            onChange={(e) => setCompany(e.target.value)} 
+          />
+        </FormControl>
+
+        {/* Submit Button */}
+        <Button type="submit" colorScheme="blue">
+          {editingContact ? 'Update Contact' : 'Add Contact'}
+        </Button>
+      </Stack>
+    </Box>
   );
 };
 
